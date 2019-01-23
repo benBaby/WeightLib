@@ -53,8 +53,20 @@ public class CornerLabelButton extends CoordinatorLayout {
                     ex.printStackTrace();
                 }
             } else if (attr == R.styleable.CornerLabelButton_number) {
-                String numberStr = typedArray.getString(attr);
-                tv_numbeer.setText(!TextUtils.isEmpty(numberStr) ? numberStr : "字段空缺！");
+                //设置数字
+                try {
+                    String numberStr = typedArray.getString(attr);
+                    if (!TextUtils.isEmpty(numberStr) && !"0".equals(numberStr)) {
+                        tv_numbeer.setText(numberStr);
+                        tv_numbeer.setVisibility(View.VISIBLE);
+                    } else {
+                        tv_numbeer.setVisibility(View.INVISIBLE);
+                    }
+                } catch (Exception ex) {
+                    Log.i(TAG, "设置数字失败");
+                    tv_numbeer.setVisibility(View.INVISIBLE);
+                    ex.printStackTrace();
+                }
             } else if (attr == R.styleable.CornerLabelButton_title) {
                 String titleStr = typedArray.getString(attr);
                 tv_title.setText(!TextUtils.isEmpty(titleStr) ? titleStr : "字段空缺!");
@@ -90,6 +102,7 @@ public class CornerLabelButton extends CoordinatorLayout {
     }
 
     public void setTv_numbeer(String numberStr) {
+
         this.tv_numbeer.setText(numberStr);
     }
 }
