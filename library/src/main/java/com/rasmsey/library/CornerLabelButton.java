@@ -2,8 +2,9 @@ package com.rasmsey.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import android.support.design.widget.CoordinatorLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+
 import android.widget.TextView;
 
 /**
@@ -22,30 +24,34 @@ public class CornerLabelButton extends CoordinatorLayout {
     private ImageView icon;
     private TextView tv_title, tv_numbeer;
 
-    public CornerLabelButton(@NonNull Context context) {
+    public CornerLabelButton(Context context) {
         super(context);
     }
 
-    public CornerLabelButton(@NonNull Context context, @Nullable AttributeSet attrs) {
+    public CornerLabelButton(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init(context);
+        initparams(context, attrs);
     }
 
-    public CornerLabelButton(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public CornerLabelButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        initparams(context, attrs);
+    }
 
+    private void initparams(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CornerLabelButton);
         int count = typedArray.getIndexCount();
         for (int i = 0; i < count; i++) {
             int attr = typedArray.getIndex(i);
             if (attr == R.styleable.CornerLabelButton_icon) {
-                 try {
-                     int ResId = typedArray.getResourceId(attr, 0);
-                     icon.setImageResource(ResId);
-                 } catch (Exception ex) {
-                     Log.i(TAG, "加载ResId资源失败");
-                     ex.printStackTrace();
-                 }
+                try {
+                    int ResId = typedArray.getResourceId(attr, 0);
+                    icon.setImageResource(ResId);
+                } catch (Exception ex) {
+                    Log.i(TAG, "加载ResId资源失败");
+                    ex.printStackTrace();
+                }
             } else if (attr == R.styleable.CornerLabelButton_number) {
                 String numberStr = typedArray.getString(attr);
                 tv_numbeer.setText(!TextUtils.isEmpty(numberStr) ? numberStr : "字段空缺！");
@@ -58,7 +64,7 @@ public class CornerLabelButton extends CoordinatorLayout {
     }
 
     private void init(Context mContext) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_cornerlabelbutton, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.layout_cornerlabelbutton, this, true);
         icon = view.findViewById(R.id.iv_icon);
         tv_title = view.findViewById(R.id.tv_title);
         tv_numbeer = view.findViewById(R.id.tv_number);
