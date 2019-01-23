@@ -2,10 +2,7 @@ package com.rasmsey.library;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
-import android.support.design.widget.CoordinatorLayout;
+import android.support.constraint.ConstraintLayout;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -18,7 +15,7 @@ import android.widget.TextView;
 /**
  *  自定义角标按钮
  */
-public class CornerLabelButton extends CoordinatorLayout {
+public class CornerLabelButton extends ConstraintLayout {
     private static final String TAG = CornerLabelButton.class.getSimpleName();
 
     private ImageView icon;
