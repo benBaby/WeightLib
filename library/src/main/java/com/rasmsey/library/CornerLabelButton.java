@@ -10,12 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
  *  自定义角标按钮
  */
-public class CornerLabelButton extends ConstraintLayout {
+public class CornerLabelButton extends RelativeLayout {
     private static final String TAG = CornerLabelButton.class.getSimpleName();
 
     private ImageView icon;
