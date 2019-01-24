@@ -100,7 +100,17 @@ public class CornerLabelButton extends RelativeLayout {
     }
 
     public void setTv_numbeer(String numberStr) {
+        try {
+            if (Integer.valueOf(numberStr) > 0) {
+                this.tv_numbeer.setVisibility(View.VISIBLE);
+            } else {
+                this.tv_numbeer.setVisibility(View.GONE);
+            }
+            this.tv_numbeer.setText(numberStr);
+        } catch (Exception ex) {
+            this.tv_numbeer.setVisibility(View.GONE);
+            ex.printStackTrace();
+        }
 
-        this.tv_numbeer.setText(numberStr);
     }
 }
