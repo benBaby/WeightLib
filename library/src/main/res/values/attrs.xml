@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <declare-styleable name="CornerLabelButton">
         <attr name="icon" format="reference" />
         <attr name="title" format="string" />
         <attr name="number" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomActionBar">
+        <attr name="cabTitleName" format="string" />
+        <attr name="cabTitleColor" format="color" />
+        <attr name="cabTitleSize" format="dimension" />
+        <attr name="cabRightTextName" format="string" />
+        <attr name="cabRightTextColor" format="color" />
+        <attr name="cabRightTextSize" format="dimension" />
+        <attr name="cabRightTextShow" format="boolean" />
     </declare-styleable>
 </resources>
