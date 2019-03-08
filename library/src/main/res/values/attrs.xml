@@ -16,4 +16,13 @@
         <attr name="cabRightTextSize" format="dimension" />
         <attr name="cabRightTextShow" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="CommonLayoutA">
+        <attr name="CLAText" format="string" />
+        <attr name="CLATextColor" format="color" />
+        <attr name="CLATextSize" format="dimension" />
+        <attr name="CLATextDrawableStart" format="reference" />
+        <attr name="CLAImageViewSrc" format="reference" />
+        <attr name="CLALeftViewSrc" format="reference" />
+    </declare-styleable>
 </resources>
