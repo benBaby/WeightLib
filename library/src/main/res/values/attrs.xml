@@ -18,11 +18,21 @@
     </declare-styleable>
 
     <declare-styleable name="CommonLayoutA">
+        <!-- 设置标题文字 -->
         <attr name="CLAText" format="string" />
+        <!-- 设置标题颜色 -->
         <attr name="CLATextColor" format="color" />
+        <!-- 设置标题大小 -->
         <attr name="CLATextSize" format="dimension" />
+        <!-- 设置标题文字左边的图片 -->
         <attr name="CLATextDrawableStart" format="reference" />
+        <!-- 设置右边图片 -->
         <attr name="CLAImageViewSrc" format="reference" />
+        <!-- 设置左边图片 -->
         <attr name="CLALeftViewSrc" format="reference" />
+        <!-- 左边的图标是否显示 -->
+        <attr name="CLALeftViewShow" format="boolean" />
+        <!-- 右边的图标是否显示 -->
+        <attr name="CLARightViewShow" format="boolean" />
     </declare-styleable>
 </resources>

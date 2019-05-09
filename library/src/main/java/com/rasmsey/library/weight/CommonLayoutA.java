@@ -15,10 +15,20 @@ import android.widget.TextView;
 
 import com.rasmsey.library.R;
 
+/**
+ *  通用列表展示布局
+ *  -----------------------------------------------
+ *   图标  文字                            文字 图标
+ *   ----------------------------------------------
+ */
 public class CommonLayoutA extends ConstraintLayout {
 
+    // 左边标题
     private TextView tv_title;
-    private ImageView icon, iv_left_icon;
+    // 右边图标
+    private ImageView icon;
+    // 左边图标
+    private ImageView iv_left_icon;
 
     public CommonLayoutA(Context context) {
         super(context);
@@ -49,11 +59,13 @@ public class CommonLayoutA extends ConstraintLayout {
                 tv_title.setCompoundDrawables(drawable, null, null, null);
             } else if (attr == R.styleable.CommonLayoutA_CLALeftViewSrc) {
                 iv_left_icon.setImageResource(typedArray.getResourceId(attr, Color.TRANSPARENT));
+            } else if (attr == R.styleable.CommonLayoutA_CLALeftViewShow) {
+                iv_left_icon.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
+            } else if (attr == R.styleable.CommonLayoutA_CLARightViewShow) {
+                icon.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
             }
         }
         typedArray.recycle();
-
-
     }
 
     public CommonLayoutA(Context context, AttributeSet attrs, int defStyleAttr) {
