@@ -24,11 +24,13 @@ import com.rasmsey.library.R;
 public class CommonLayoutA extends ConstraintLayout {
 
     // 左边标题
-    private TextView tv_title;
+    private TextView tv_left_title;
     // 右边图标
-    private ImageView icon;
+    private ImageView iv_right_icon;
     // 左边图标
     private ImageView iv_left_icon;
+    //右边的文字
+    private TextView tv_right_title;
 
     public CommonLayoutA(Context context) {
         super(context);
@@ -37,8 +39,9 @@ public class CommonLayoutA extends ConstraintLayout {
     public CommonLayoutA(Context context, AttributeSet attrs) {
         super(context, attrs);
         View view = LayoutInflater.from(context).inflate(R.layout.layout_common_layout_a, this, true);
-         tv_title = view.findViewById(R.id.tv_layout_common_a_title);
-         icon = view.findViewById(R.id.iv_layout_common_icon);
+        tv_left_title = view.findViewById(R.id.tv_layout_common_a_title);
+        tv_right_title = view.findViewById(R.id.textView);
+        iv_right_icon = view.findViewById(R.id.iv_layout_common_icon);
         iv_left_icon = findViewById(R.id.iv_left_icon);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonLayoutA);
@@ -46,23 +49,29 @@ public class CommonLayoutA extends ConstraintLayout {
         for (int i = 0; i <indexCount; i++) {
             int attr = typedArray.getIndex(i);
             if (attr == R.styleable.CommonLayoutA_CLAText) {
-                tv_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
+                tv_left_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
             } else if (attr == R.styleable.CommonLayoutA_CLATextColor) {
-                tv_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
+                tv_left_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
             } else if (attr == R.styleable.CommonLayoutA_CLATextSize) {
-                tv_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
+                tv_left_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLAImageViewSrc) {
-                icon.setImageResource(typedArray.getResourceId(attr,Color.TRANSPARENT));
+                iv_right_icon.setImageResource(typedArray.getResourceId(attr,Color.TRANSPARENT));
             } else if (attr == R.styleable.CommonLayoutA_CLATextDrawableStart) {
                 Drawable drawable = typedArray.getDrawable(attr);
                 drawable.setBounds(0, 0, 0, 0);
-                tv_title.setCompoundDrawables(drawable, null, null, null);
+                tv_left_title.setCompoundDrawables(drawable, null, null, null);
             } else if (attr == R.styleable.CommonLayoutA_CLALeftViewSrc) {
                 iv_left_icon.setImageResource(typedArray.getResourceId(attr, Color.TRANSPARENT));
             } else if (attr == R.styleable.CommonLayoutA_CLALeftViewShow) {
                 iv_left_icon.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
             } else if (attr == R.styleable.CommonLayoutA_CLARightViewShow) {
-                icon.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
+                iv_right_icon.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
+            } else if (attr == R.styleable.CommonLayoutA_CLARightText) {
+                tv_right_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightTextSize) {
+                tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightTextColor) {
+                tv_right_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
             }
         }
         typedArray.recycle();

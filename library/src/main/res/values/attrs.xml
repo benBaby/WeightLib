@@ -34,5 +34,11 @@
         <attr name="CLALeftViewShow" format="boolean" />
         <!-- 右边的图标是否显示 -->
         <attr name="CLARightViewShow" format="boolean" />
+        <!-- 右边的文字 -->
+        <attr name="CLARightText" format="string" />
+        <!-- 右边的文字大小 -->
+        <attr name="CLARightTextSize" format="dimension" />
+        <!-- 右边的文字颜色 -->
+        <attr name="CLARightTextColor" format="color" />
     </declare-styleable>
 </resources>
