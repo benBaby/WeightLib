@@ -31,6 +31,8 @@ public class CommonLayoutA extends ConstraintLayout {
     private ImageView iv_left_icon;
     //右边的文字
     private TextView tv_right_title;
+    //下划线
+    private View divider;
 
     public CommonLayoutA(Context context) {
         super(context);
@@ -42,7 +44,8 @@ public class CommonLayoutA extends ConstraintLayout {
         tv_left_title = view.findViewById(R.id.tv_layout_common_a_title);
         tv_right_title = view.findViewById(R.id.textView);
         iv_right_icon = view.findViewById(R.id.iv_layout_common_icon);
-        iv_left_icon = findViewById(R.id.iv_left_icon);
+        iv_left_icon = view.findViewById(R.id.iv_left_icon);
+        divider = view.findViewById(R.id.divider);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonLayoutA);
         int indexCount = typedArray.getIndexCount();
@@ -72,6 +75,8 @@ public class CommonLayoutA extends ConstraintLayout {
                 tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLARightTextColor) {
                 tv_right_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
+            } else if (attr == R.styleable.CommonLayoutA_CLADividerColor) {
+                divider.setBackgroundColor(typedArray.getColor(attr, Color.TRANSPARENT));
             }
         }
         typedArray.recycle();

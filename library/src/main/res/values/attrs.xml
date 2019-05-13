@@ -40,5 +40,7 @@
         <attr name="CLARightTextSize" format="dimension" />
         <!-- 右边的文字颜色 -->
         <attr name="CLARightTextColor" format="color" />
+        <!-- 下划线颜色 -->
+        <attr name="CLADividerColor" format="color" />
     </declare-styleable>
 </resources>
