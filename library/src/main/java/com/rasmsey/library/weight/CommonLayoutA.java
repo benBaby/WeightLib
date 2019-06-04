@@ -85,4 +85,12 @@ public class CommonLayoutA extends ConstraintLayout {
     public CommonLayoutA(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
+
+    public String getTv_right_title() {
+        return tv_right_title.getText().toString();
+    }
+
+    public void setTv_right_title(String tv_right_title) {
+        this.tv_right_title.setText(tv_right_title);
+    }
 }
