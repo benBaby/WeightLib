@@ -4,13 +4,13 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
+import com.ramsey.base_mvvm.bean.DialogBean
 
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
 /**
  *
- * @author 阿钟
  */
 
 abstract class BaseViewModel : ViewModel() {
@@ -22,7 +22,7 @@ abstract class BaseViewModel : ViewModel() {
     /**
      * 用来通知 Activity／Fragment 是否显示等待Dialog
      */
-    //    protected DialogLiveData<DialogBean> showDialog = new DialogLiveData<>();
+    protected var showDialog : DialogLiveData<DialogBean> = DialogLiveData<DialogBean>();
     /**
      * 当ViewModel层出现错误需要通知到Activity／Fragment
      */
@@ -38,9 +38,9 @@ abstract class BaseViewModel : ViewModel() {
         compositeDisposable!!.add(disposable)
     }
 
-    //    public void getShowDialog(LifecycleOwner owner, Observer<DialogBean> observer) {
-    //        showDialog.observe(owner, observer);
-    //    }
+    fun getShowDialog(owner: LifecycleOwner, observer: Observer<DialogBean>) {
+        showDialog.observe(owner, observer)
+    }
 
     fun getError(owner: LifecycleOwner, observer: Observer<Any>) {
         error!!.observe(owner, observer)

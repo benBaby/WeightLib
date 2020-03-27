@@ -41,7 +41,7 @@ public class CornerLabelButton extends RelativeLayout {
         int count = typedArray.getIndexCount();
         for (int i = 0; i < count; i++) {
             int attr = typedArray.getIndex(i);
-            if (attr == R.styleable.CornerLabelButton_icon) {
+            if (attr == R.styleable.CornerLabelButton_CLBIcon) {
                 try {
                     int ResId = typedArray.getResourceId(attr, 0);
                     icon.setImageResource(ResId);
@@ -49,7 +49,7 @@ public class CornerLabelButton extends RelativeLayout {
                     Log.i(TAG, "加载ResId资源失败");
                     ex.printStackTrace();
                 }
-            } else if (attr == R.styleable.CornerLabelButton_number) {
+            } else if (attr == R.styleable.CornerLabelButton_CLBNumber) {
                 //设置数字
                 try {
                     String numberStr = typedArray.getString(attr);
@@ -64,7 +64,7 @@ public class CornerLabelButton extends RelativeLayout {
                     tv_numbeer.setVisibility(View.INVISIBLE);
                     ex.printStackTrace();
                 }
-            } else if (attr == R.styleable.CornerLabelButton_title) {
+            } else if (attr == R.styleable.CornerLabelButton_CLBTitle) {
                 String titleStr = typedArray.getString(attr);
                 tv_title.setText(!TextUtils.isEmpty(titleStr) ? titleStr : "字段空缺!");
             }

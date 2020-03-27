@@ -2,9 +2,9 @@
 <resources>
 
     <declare-styleable name="CornerLabelButton">
-        <attr name="icon" format="reference" />
-        <attr name="title" format="string" />
-        <attr name="number" format="string" />
+        <attr name="CLBIcon" format="reference" />
+        <attr name="CLBTitle" format="string" />
+        <attr name="CLBNumber" format="string" />
     </declare-styleable>
 
     <declare-styleable name="CustomActionBar">

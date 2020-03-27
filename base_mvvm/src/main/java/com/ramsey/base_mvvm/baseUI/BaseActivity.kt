@@ -29,16 +29,13 @@ abstract class BaseActivity<VM : BaseViewModel, DB : ViewDataBinding> : BaseNoMo
      */
     private fun initObserve() {
         if (viewModel == null) return
-        //        viewModel.getShowDialog(this, new Observer<DialogBean>() {
-        //            @Override
-        //            public void onChanged(DialogBean bean) {
-        //                if (bean.isShow()) {
-        //                    showDialog(bean.getMsg());
-        //                } else {
-        //                    dismissDialog();
-        //                }
-        //            }
-        //        });
+                viewModel?.getShowDialog(this, Observer { bean ->
+                    if (bean.isShow()) {
+
+                    } else {
+
+                    }
+                });
         viewModel!!.getError(this, Observer { obj -> showError(obj) })
     }
 
