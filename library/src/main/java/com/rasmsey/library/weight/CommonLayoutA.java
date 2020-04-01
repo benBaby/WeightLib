@@ -9,6 +9,7 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,10 +18,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.rasmsey.library.R;
 
 /**
- *  通用列表展示布局
- *  -----------------------------------------------
- *   图标  文字                            文字 图标
- *   ----------------------------------------------
+ * 通用列表展示布局
+ * -----------------------------------------------
+ * 图标  文字                            文字 图标
+ * ----------------------------------------------
  */
 public class CommonLayoutA extends ConstraintLayout {
 
@@ -34,6 +35,8 @@ public class CommonLayoutA extends ConstraintLayout {
     private TextView tv_right_title;
     //下划线
     private View divider;
+    //右边  EditText
+    private EditText et_right_value;
 
     public CommonLayoutA(Context context) {
         super(context);
@@ -46,11 +49,12 @@ public class CommonLayoutA extends ConstraintLayout {
         tv_right_title = view.findViewById(R.id.textView);
         iv_right_icon = view.findViewById(R.id.iv_layout_common_icon);
         iv_left_icon = view.findViewById(R.id.iv_left_icon);
+        et_right_value = view.findViewById(R.id.editText);
         divider = view.findViewById(R.id.divider);
 
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CommonLayoutA);
         int indexCount = typedArray.getIndexCount();
-        for (int i = 0; i <indexCount; i++) {
+        for (int i = 0; i < indexCount; i++) {
             int attr = typedArray.getIndex(i);
             if (attr == R.styleable.CommonLayoutA_CLAText) {
                 tv_left_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
@@ -59,7 +63,7 @@ public class CommonLayoutA extends ConstraintLayout {
             } else if (attr == R.styleable.CommonLayoutA_CLATextSize) {
                 tv_left_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLAImageViewSrc) {
-                iv_right_icon.setImageResource(typedArray.getResourceId(attr,Color.TRANSPARENT));
+                iv_right_icon.setImageResource(typedArray.getResourceId(attr, Color.TRANSPARENT));
             } else if (attr == R.styleable.CommonLayoutA_CLATextDrawableStart) {
                 Drawable drawable = typedArray.getDrawable(attr);
                 drawable.setBounds(0, 0, 0, 0);
@@ -73,11 +77,24 @@ public class CommonLayoutA extends ConstraintLayout {
             } else if (attr == R.styleable.CommonLayoutA_CLARightText) {
                 tv_right_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
             } else if (attr == R.styleable.CommonLayoutA_CLARightTextSize) {
-                tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
+                tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLARightTextColor) {
                 tv_right_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
             } else if (attr == R.styleable.CommonLayoutA_CLADividerColor) {
                 divider.setBackgroundColor(typedArray.getColor(attr, Color.TRANSPARENT));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextHint) {
+                et_right_value.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValue) {
+                et_right_value.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValueSize) {
+                et_right_value.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimensionPixelSize(attr, 14));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValueColor) {
+                et_right_value.setTextColor(typedArray.getColor(attr, Color.BLACK));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextEnable) {
+                et_right_value.setEnabled(typedArray.getBoolean(attr, true));
+            } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextViewShow) {
+                et_right_value.setVisibility(typedArray.getBoolean(attr, false) ? View.VISIBLE : View.GONE);
+                tv_right_title.setVisibility(typedArray.getBoolean(attr, false) ? View.GONE : View.VISIBLE);
             }
         }
         typedArray.recycle();
@@ -93,5 +110,31 @@ public class CommonLayoutA extends ConstraintLayout {
 
     public void setTv_right_title(String tv_right_title) {
         this.tv_right_title.setText(tv_right_title);
+    }
+
+    /**
+     * 隐藏 TextView
+     * 显示 EditText
+     */
+    public void setEditTextShow() {
+        tv_right_title.setVisibility(View.GONE);
+        et_right_value.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 设置右边 EditText 的值
+     */
+    public void setEDRightValue(String message) {
+        if (!TextUtils.isEmpty(message.trim())) {
+            et_right_value.setText(message);
+        }
+    }
+
+    /**
+     *  设置 editText 是否可编辑
+     * @param flag  true/false
+     */
+    public void setRightEditTextEnable(boolean flag) {
+        et_right_value.setEnabled(flag);
     }
 }

@@ -42,5 +42,17 @@
         <attr name="CLARightTextColor" format="color" />
         <!-- 下划线颜色 -->
         <attr name="CLADividerColor" format="color" />
+        <!-- 右边可编辑视图 hint  -->
+        <attr name="CLARightEditTextHint" format="string" />
+        <!-- 右边可编辑视图 值 -->
+        <attr name="CLARightEditTextValue" format="string" />
+        <!-- 右边可编辑视图 值 颜色  -->
+        <attr name="CLARightEditTextValueColor" format="color" />
+        <!-- 右边可编辑视图 值 字体大小  -->
+        <attr name="CLARightEditTextValueSize" format="dimension" />
+        <!-- 右边可编辑视图  值 是否能修改 -->
+        <attr name="CLARightEditTextEnable" format="boolean" />
+        <!-- 右边 显示的是可编辑的View 还是普通的View  默认显示普通的视图 -->
+        <attr name="CLARightEditTextViewShow" format="boolean" />
     </declare-styleable>
 </resources>
