@@ -66,6 +66,7 @@ public class CommonLayoutA extends ConstraintLayout {
                 iv_right_icon.setImageResource(typedArray.getResourceId(attr, Color.TRANSPARENT));
             } else if (attr == R.styleable.CommonLayoutA_CLATextDrawableStart) {
                 Drawable drawable = typedArray.getDrawable(attr);
+                assert drawable != null;
                 drawable.setBounds(0, 0, 0, 0);
                 tv_left_title.setCompoundDrawables(drawable, null, null, null);
             } else if (attr == R.styleable.CommonLayoutA_CLALeftViewSrc) {
@@ -77,7 +78,7 @@ public class CommonLayoutA extends ConstraintLayout {
             } else if (attr == R.styleable.CommonLayoutA_CLARightText) {
                 tv_right_title.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
             } else if (attr == R.styleable.CommonLayoutA_CLARightTextSize) {
-                tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimensionPixelSize(attr, 14));
+                tv_right_title.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLARightTextColor) {
                 tv_right_title.setTextColor(typedArray.getColor(attr, Color.BLACK));
             } else if (attr == R.styleable.CommonLayoutA_CLADividerColor) {
@@ -87,7 +88,7 @@ public class CommonLayoutA extends ConstraintLayout {
             } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValue) {
                 et_right_value.setText(TextUtils.isEmpty(typedArray.getString(attr)) ? "" : typedArray.getString(attr));
             } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValueSize) {
-                et_right_value.setTextSize(TypedValue.COMPLEX_UNIT_SP, typedArray.getDimensionPixelSize(attr, 14));
+                et_right_value.setTextSize(TypedValue.COMPLEX_UNIT_PX, typedArray.getDimensionPixelSize(attr, 14));
             } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextValueColor) {
                 et_right_value.setTextColor(typedArray.getColor(attr, Color.BLACK));
             } else if (attr == R.styleable.CommonLayoutA_CLARightEditTextEnable) {
