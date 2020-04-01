@@ -132,6 +132,18 @@ public class CommonLayoutA extends ConstraintLayout {
     }
 
     /**
+     *  获取右边 EditText 的值
+     * @return
+     */
+    public String getEditTextValue() {
+        if (TextUtils.isEmpty(et_right_value.getText().toString())) {
+            return "";
+        } else {
+            return et_right_value.getText().toString();
+        }
+    }
+
+    /**
      *  设置 editText 是否可编辑
      * @param flag  true/false
      */
