@@ -110,6 +110,13 @@ public class CornerLabelButton extends RelativeLayout {
             this.tv_numbeer.setVisibility(View.INVISIBLE);
             ex.printStackTrace();
         }
+    }
 
+    public void setIcon(int iconResId) {
+        try {
+            icon.setImageResource(iconResId);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 }
